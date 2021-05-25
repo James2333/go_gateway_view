@@ -150,7 +150,68 @@ export const constantRoutes = [
           affix: false
         },
         hidden: true
+      },
+      {
+        path: 'service_stat/:id(\\d+)',
+        component: () => import('@/views/service/stat'),
+        name: '服务统计',
+        meta: {
+          title: '服务统计',
+          icon: 'component',
+          affix: false
+        },
+        hidden: true
       }
+    ]
+  },
+  {
+    path: '/app',
+    redirect: '/app/app_list',
+    component: Layout,
+    name: '租户管理',
+    meta: {
+      title: '租户管理',
+      icon: 'user'
+    },
+    children: [{
+      path: 'app_list',
+      component: () => import('@/views/app/app_list'),
+      name: '租户列表',
+      meta: {
+        title: '租户列表',
+        icon: 'user',
+        affix: false
+      }
+    },
+    {
+      path: 'app_create',
+      component: () => import('@/views/app/app'),
+      name: 'CreateApp',
+      meta: {
+        title: '创建租户',
+        icon: 'edit'
+      },
+      hidden: true
+    },
+    {
+      path: 'app_edit/:id(\\d+)',
+      component: () => import('@/views/app/app'),
+      name: 'EditApp',
+      meta: {
+        title: '修改租户'
+      },
+      hidden: true
+    },
+    {
+      path: 'app_stat/:id(\\d+)',
+      component: () => import('@/views/app/stat'),
+      name: 'AppStat',
+      meta: {
+        title: '租户流量统计',
+        noCache: true
+      },
+      hidden: true
+    }
     ]
   }
 ]
